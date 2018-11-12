@@ -1,8 +1,8 @@
 
 #include "unionfind.h"
 
-unsigned long parent [100];
-unsigned long rank [100];
+unsigned long parent [1000];
+unsigned long rank [1000];
 unsigned long vertex_count;
 
 void make_set(unsigned long p_vertex_count){
@@ -25,15 +25,15 @@ unsigned long find (unsigned long i){
 void Union (unsigned long i, unsigned long j){
     unsigned long ri = find(i);
     unsigned long rj = find(j);
-    if (rank[i]>rank[j]) {
-        parent[j]=i;
-        rank[i]+=(rank[j]+1);
-        rank[j]=0;
+    if (rank[ri]>rank[rj]) {
+        parent[rj]=ri;
+        rank[ri]+=(rank[rj]+1);
+        rank[rj]=0;
     }
     else{
-        parent[i]=j;
-        rank[j]+=(rank[i]+1);
-        rank[i]=0;
+        parent[ri]=rj;
+        rank[rj]+=(rank[ri]+1);
+        rank[ri]=0;
     }
 }
 

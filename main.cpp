@@ -28,7 +28,7 @@ void union_find();
 // Schritt 4: Ausgabe
 void ausgeben(Graph &result);
 
-void union_find();
+//void union_find();
 
 void einlesen(char *dateiname) {
     std::ifstream file;
@@ -120,10 +120,13 @@ int main(int argc,  char** argv) {
 
 void union_find() {
     make_set(graph.vertex_count);
-    for(unsigned i=0;i<graph.edge_count&&mst.edge_count<graph.vertex_count;i++){
+    mst.edge_count = 0;
+    for(unsigned i=0;i<graph.edge_count;i++){
         unsigned long a=graph.edges[i].a;
         unsigned long b=graph.edges[i].b;
-        if (find(a)!=find(b)){
+        unsigned long fa = find(a);
+        unsigned long fb = find(b);
+        if (fa != fb){
             mst.edges.push_back(graph.edges[i]);
             mst.edge_count++;
             Union(a,b);
@@ -132,18 +135,17 @@ void union_find() {
     mst.vertex_count = mst.edge_count+1;
 }
 
-//
 
 void ausgeben(Graph &result) {
     int weight = 0;
-    for (unsigned i=0; i <= result.vertex_count; i++){
+    for (unsigned i=0; i < result.edge_count; i++){
         weight += result.edges[i].weight;
     }
 
     std::cout<<"The following is a minimum weight spanning tree with weight "<< weight << std::endl;
     std::cout<<"The graph contains vertices 0,...," << result.vertex_count - 1 << " and the following edges:"<<std::endl;
 
-    for (unsigned i=0; i <= result.vertex_count; i++){
+    for (unsigned i=0; i < result.edge_count; i++){
         std::cout<<"{" << result.edges[i].a << "," << result.edges[i].b << "} with weight " << result.edges[i].weight << std::endl;
     }
 }
