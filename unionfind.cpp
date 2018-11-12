@@ -1,11 +1,17 @@
 
 #include "unionfind.h"
 
-unsigned long parent [1000];
-unsigned long rank [1000];
+unsigned long parent [1000000];
+unsigned long rank [1000000];
 unsigned long vertex_count;
 
 void make_set(unsigned long p_vertex_count){
+    /*if(parent == NULL)
+        parent = new unsigned long[p_vertex_count];
+
+    if(rank == NULL)
+        rank = new unsigned long[p_vertex_count];
+    */
     vertex_count = p_vertex_count;
     for (unsigned long i=0;i<vertex_count;i++){
         parent[i]=i;
