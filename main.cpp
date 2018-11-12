@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
 
 #include "unionfind.h"
 
@@ -76,6 +77,18 @@ struct graph_weight
 // todo prüfen, ob alle Knoten verbunden sind
 
 bool check_graph() {
+    make_set(graph.vertex_count);
+    for(unsigned i=0;i<graph.edge_count;i++){
+        unsigned long a=graph.edges[i].a;
+        unsigned long b=graph.edges[i].b;
+        Union(a,b);
+    }
+    unsigned long start=find(0);
+    for (unsigned i=0;i<graph.vertex_count;i++){
+        if (find(i)!=start){
+            return false;
+        }
+    }
     return true;
 }
 
@@ -105,6 +118,15 @@ int main(int argc,  char** argv) {
 }
 
 void union_find() {
+    make_set(graph.vertex_count);
+
+    for(unsigned i=0;i<graph.edge_count;i++){
+        unsigned long a=graph.edges[i].a;
+        unsigned long b=graph.edges[i].b;
+        if (find(a)!=find(b)){
+            Union(a,b);
+        }
+    }
 
 }
 

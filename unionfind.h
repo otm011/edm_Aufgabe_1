@@ -10,7 +10,7 @@
 #endif //UNION_FIND_CYCLE_UNIONFIND_H_H
 
 struct Edge {
-    int a,b; // a!=b
+    unsigned long a,b; // a!=b
     int weight;
 };
 
@@ -21,11 +21,11 @@ struct Graph {
 };
 
 
-void make_set(unsigned long vertex_count,unsigned long parent [vertex_count],unsigned long rank [vertex_count]);
+void make_set(unsigned long vertex_count);
 
-unsigned long find (unsigned long i,unsigned long vertex_count,unsigned long parent [vertex_count],unsigned long rank [vertex_count]);
+unsigned long find (unsigned long i);
 
-void Union (unsigned long i, unsigned long j, unsigned long vertex_count,unsigned long parent [vertex_count],unsigned long rank [vertex_count]);
+void Union (unsigned long i, unsigned long j);
 
 /*int find (int x, Graph *graph);
 int parent (int x, Graph *graph);*/
