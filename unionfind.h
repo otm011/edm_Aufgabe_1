@@ -20,8 +20,15 @@ struct Graph {
     std::vector<Edge> edges;
 };
 
-int find (int x, Graph *graph);
-int parent (int x, Graph *graph);
+
+void make_set(unsigned long vertex_count,unsigned long parent [vertex_count],unsigned long rank [vertex_count]);
+
+unsigned long find (unsigned long i,unsigned long vertex_count,unsigned long parent [vertex_count],unsigned long rank [vertex_count]);
+
+void Union (unsigned long i, unsigned long j, unsigned long vertex_count,unsigned long parent [vertex_count],unsigned long rank [vertex_count]);
+
+/*int find (int x, Graph *graph);
+int parent (int x, Graph *graph);*/
 
 /*gegeben: Ordnung der Kanten nach Kosten => gehe die Kanten nacheinander durch, entscheide in jedem Schritt,
 ob der graph einen Kreis besitzt => was haben wir zu tun: in einem beliebigen Schritt entscheiden, ob der Graph einen

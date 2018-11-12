@@ -80,6 +80,7 @@ int main() {
         std::cout<<graph.edges[i].a<<" "<<graph.edges[i].b<<" "<<graph.edges[i].weight<<std::endl;
     }
 
+
     return 0;
 }
     /*std::vector<int> *partitions = {-1,-1,-1,-1};
