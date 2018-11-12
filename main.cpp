@@ -40,7 +40,8 @@ void einlesen() {
 int main() {
     std::ifstream file;
     std::string line;
-    file.open("C:\\Instanz1.txt");
+    file.open("C:\\Users\\Mo\\CLionProjects\\union_find_cycle\\inst_1000000");
+//    file.open("C:\\Instanz1.txt");
 
 
 /*
@@ -60,22 +61,23 @@ int main() {
     int n = 0;
 
     int a,b,weight;
-    Graph *graph = new Graph;
+    Graph graph;
 
-
-    graph->edges.reserve(100);
     while (!file.eof()) {
         file>>a>>b>>weight;
-        std::cout<<a<<" "<<b<<" "<<weight<<std::endl;
-        Edge *edge = &graph->edges[n];
-        edge->a=a;
-        edge->b=b;
-        edge->weight;
+//        std::cout<<a<<" "<<b<<" "<<weight<<std::endl;
+        Edge edge;
+        edge.a=a;
+        edge.b=b;
+        edge.weight = weight;
+
+        graph.edges.push_back(edge);
+
         n++;
     }
 
     for (unsigned i=0;i<=n;i++){
-        std::cout<<graph->edges[i].a<<" "<<graph->edges[i].b<<" "<<graph->edges[i].weight<<std::endl;
+        std::cout<<graph.edges[i].a<<" "<<graph.edges[i].b<<" "<<graph.edges[i].weight<<std::endl;
     }
 
     return 0;
