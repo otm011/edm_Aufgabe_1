@@ -6,6 +6,7 @@
 #include "unionfind.h"
 
 Graph graph;
+Graph mst;
 
 // Schritt 1: Interpretation
 // 1.Zeile lesen => Array mit Knoten erstellen von 0 bis n-1
@@ -110,25 +111,28 @@ int main(int argc,  char** argv) {
 
     sortieren();
 
-    ausgeben(graph);
-
     union_find();
+
+    ausgeben(mst);
 
     return 0;
 }
 
 void union_find() {
     make_set(graph.vertex_count);
-
-    for(unsigned i=0;i<graph.edge_count;i++){
+    for(unsigned i=0;i<graph.edge_count&&mst.edge_count<graph.vertex_count;i++){
         unsigned long a=graph.edges[i].a;
         unsigned long b=graph.edges[i].b;
         if (find(a)!=find(b)){
+            mst.edges.push_back(graph.edges[i]);
+            mst.edge_count++;
             Union(a,b);
         }
     }
-
+    mst.vertex_count = mst.edge_count+1;
 }
+
+//
 
 void ausgeben(Graph &result) {
     int weight = 0;
