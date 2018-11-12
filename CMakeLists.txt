@@ -3,5 +3,5 @@ project(union_find_cycle)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp unionfind.cpp unionfind.h)
 add_executable(union_find_cycle ${SOURCE_FILES})
